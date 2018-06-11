@@ -158,3 +158,13 @@ input:-webkit-autofill {
   transition: .3s;
   color: #ccc;
 }
+
+
+.weather__city{
+  font-size: 25px;
+}
+
+.weather__alert {
+  color: #cd5360;
+  font-weight: 600;
+}
