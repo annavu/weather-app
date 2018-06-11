@@ -24,12 +24,14 @@ class App extends React.Component {
     const city = e.target.elements.city.value;
     const apiCall = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`);
     const data = await apiCall.json();
-    const sunrise = new Date(1000*data.sys.sunrise);
-    const sunset = new Date(1000*data.sys.sunset);
-    const currentTimeZoneOffsetInHours = sunrise.getTimezoneOffset() / 60
+    // const sunrise = new Date(1000*data.sys.sunrise);
+    // const sunset = new Date(1000*data.sys.sunset);
+    // const currentTimeZoneOffsetInHours = sunrise.getTimezoneOffset() / 60
 
 
     if(city) {
+      const sunrise = new Date(1000*data.sys.sunrise);
+      const sunset = new Date(1000*data.sys.sunset);
       const hoursSunrise = sunrise.getHours();
       const hoursSunset = sunset.getHours();
       const minutesSunrise = "0" + sunrise.getMinutes();
@@ -40,7 +42,7 @@ class App extends React.Component {
       const sunsetTime = hoursSunset + ':' + minutesSunset.substr(-2);
       console.log(data);
       console.log(sunrise);
-      console.log(currentTimeZoneOffsetInHours);
+      // console.log(currentTimeZoneOffsetInHours);
 
       this.setState({
         icon: `http://openweathermap.org/img/w/${data.weather[0].icon}.png`,
