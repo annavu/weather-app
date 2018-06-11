@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Header from './components/Header';
 import Form from './components/Form';
 import Weather from './components/Weather';
@@ -24,8 +24,6 @@ class App extends React.Component {
     const city = e.target.elements.city.value;
     const apiCall = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`);
     const data = await apiCall.json();
-    // const sunrise = new Date(1000*data.sys.sunrise);
-    // const sunset = new Date(1000*data.sys.sunset);
     // const currentTimeZoneOffsetInHours = sunrise.getTimezoneOffset() / 60
 
 
@@ -36,9 +34,7 @@ class App extends React.Component {
       const hoursSunset = sunset.getHours();
       const minutesSunrise = "0" + sunrise.getMinutes();
       const minutesSunset = "0" + sunset.getMinutes();
-      const secondsSunrise = "0" + sunrise.getSeconds();
-      const secondsSunset = "0" + sunset.getSeconds();
-      const formattedTime = hoursSunrise + ':' + minutesSunrise.substr(-2);
+      const sunriseTime = hoursSunrise + ':' + minutesSunrise.substr(-2);
       const sunsetTime = hoursSunset + ':' + minutesSunset.substr(-2);
       console.log(data);
       console.log(sunrise);
@@ -47,7 +43,7 @@ class App extends React.Component {
       this.setState({
         icon: `http://openweathermap.org/img/w/${data.weather[0].icon}.png`,
         temperature: data.main.temp,
-        sunrise: formattedTime,
+        sunrise: sunriseTime,
         sunset: sunsetTime,
         city: data.name,
         country: data.sys.country,
