@@ -36,8 +36,8 @@ class App extends React.Component {
       const minutesSunset = "0" + sunset.getMinutes();
       const sunriseTime = hoursSunrise + ':' + minutesSunrise.substr(-2);
       const sunsetTime = hoursSunset + ':' + minutesSunset.substr(-2);
-      console.log(data);
-      console.log(sunrise);
+      // console.log(data);
+      // console.log(sunrise);
       // console.log(currentTimeZoneOffsetInHours);
 
       this.setState({
