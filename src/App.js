@@ -22,7 +22,7 @@ class App extends React.Component {
   getWeather = async (e) => {
     e.preventDefault();
     const city = e.target.elements.city.value;
-    const apiCall = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`);
+    const apiCall = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`);
     const data = await apiCall.json();
     // const currentTimeZoneOffsetInHours = sunrise.getTimezoneOffset() / 60
 
@@ -41,7 +41,7 @@ class App extends React.Component {
       // console.log(currentTimeZoneOffsetInHours);
 
       this.setState({
-        icon: `http://openweathermap.org/img/w/${data.weather[0].icon}.png`,
+        icon: `https://openweathermap.org/img/w/${data.weather[0].icon}.png`,
         temperature: data.main.temp,
         sunrise: sunriseTime,
         sunset: sunsetTime,
